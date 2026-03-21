@@ -1,5 +1,8 @@
 # ⚡ Sistema Preditivo para Aquisição Estratégica de Energia (Hedge)
 
+👉 **Full project explanation available on my blog:**  
+🔗 [Click here](https://dataineverywhere.ct.ws/projects/energy-hedge-strategy-how-a-predictive-system-protects-millions-in-energy-costs/)
+
 > **Projeto de Data Science end-to-end** que combina previsão de série temporal com um motor de decisão prescritivo para proteger empresas de varejo contra a volatilidade do Mercado Livre de Energia elétrica.
 
 [![YouTube](https://img.shields.io/badge/YouTube-Demonstração%20do%20Projeto-red?logo=youtube)](https://www.youtube.com/watch?v=GKcSGRexRgw)
