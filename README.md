@@ -2,6 +2,9 @@
 
 > **Projeto de Data Science end-to-end** que combina previsão de série temporal com um motor de decisão prescritivo para proteger empresas de varejo contra a volatilidade do Mercado Livre de Energia elétrica.
 
+[![YouTube](https://img.shields.io/badge/YouTube-Demonstração%20do%20Projeto-red?logo=youtube)](https://www.youtube.com/watch?v=GKcSGRexRgw&t=1118s)
+
+
 ![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -197,5 +200,5 @@ Poupança   = Custo Base - Custo IA
 
 ---
 
-> 💡 *Este projeto faz parte do meu portfólio de transição para Data Science, demonstrando aplicação prática de séries temporais, engenharia de features e analytics prescritivo em um problema real de negócio do setor energético.*
+
 
