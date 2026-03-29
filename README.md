@@ -8,7 +8,7 @@
 [![YouTube](https://img.shields.io/badge/YouTube-Demonstração%20do%20Projeto-red?logo=youtube)](https://www.youtube.com/watch?v=GKcSGRexRgw)
 
 
-![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
+![Status](https://img.shields.io/badge/Status-Conclu%C3%ADdo-brightgreen)
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
@@ -25,6 +25,7 @@
 - [Como Executar](#como-executar)
 - [Resultados e Métricas](#resultados-e-métricas)
 - [Motor de Decisão Prescritivo](#motor-de-decisão-prescritivo)
+- [Arquitetura da Solução (Migração Databricks)](#Arquitetura)
 - [Próximos Passos](#próximos-passos)
 - [Autor](#autor)
 
@@ -182,15 +183,101 @@ Custo IA   = (Previsão IA × Preço Contrato) + [(Consumo Real - Previsão IA) 
 Poupança   = Custo Base - Custo IA
 ```
 
+
+---
+
+## 3. Arquitetura da Solução (Migração Databricks)
+
+[cite_start]O projeto foi totalmente migrado e estruturado no ambiente **Databricks**, utilizando **PySpark** para o processamento de grandes volumes de dados[cite: 27]. A solução é composta por três módulos principais que utilizam **MLflow** para a gestão do ciclo de vida de Machine Learning:
+
+### 🛠️ Ingestão e Tratamento de Dados (`getDataFromAPI_PySpark.ipynb`)
+* [cite_start]**Extração via API**: Automação da coleta de dados de Carga Verificada do submercado SE/CO através da API pública do Operador Nacional do Sistema (ONS)[cite: 22].
+* [cite_start]**Processamento de Proxy**: Implementação da técnica de escala Top-Down para gerar a curva de carga da rede varejista[cite: 18].
+* [cite_start]**Regra dos 0,05%**: O consumo diário da rede Foodshop é calculado como exatamente 0,05% da carga total verificada do submercado SE/CO[cite: 21].
+* [cite_start]**Sazonalidade e Clima**: A metodologia garante a representação fiel de feriados, variações climáticas e sazonalidades regionais[cite: 23].
+
+### 🤖 Pipeline de Machine Learning e Tracking (`XGBoost_ML_Pipeline.ipynb`)
+* [cite_start]**Modelagem Multivariada**: Utilização do algoritmo **XGBoost** em ambiente PySpark para prever exclusivamente o Volume de Consumo (MWh)[cite: 24, 27].
+* [cite_start]**Variáveis Exógenas (X)**: O consumo é modelado considerando a Temperatura Média/Máxima e o Calendário (Dias da semana e Feriados) como principais ofensores[cite: 28].
+* [cite_start]**Gestão com MLflow**: Rastreamento de experimentos e monitoramento de métricas de performance para garantir a precisão da variável alvo[cite: 60].
+* [cite_start]**Escopo da IA**: O modelo é restrito à previsão de volume, não realizando previsões de preço de energia[cite: 27].
+
+### 📊 Motor Prescritivo e Análise de Impacto (`Financial_Impact.ipynb`)
+* [cite_start]**Matriz de Decisão**: Algoritmo que automatiza a recomendação de compra baseada em uma matriz de risco parametrizada no código[cite: 34, 35].
+* [cite_start]**Níveis de Recomendação**: Classificação da urgência em quatro níveis, do Mercado Spot (Nível 0) ao Alerta Crítico (Nível 3), baseada na diferença entre o preço Spot e o contrato fixo[cite: 35, 36, 42].
+* [cite_start]**Backtesting Financeiro**: Simulação de cenários passados utilizando o histórico real do PLD da CCEE[cite: 30, 31].
+* [cite_start]**Hedge Travado**: Uso de um preço fixo fictício de R$ 160,00/MWh para validar a estratégia de proteção contra a volatilidade[cite: 32].
+* [cite_start]**Cálculo de Saving**: Mensuração do sucesso através do *Cost Avoidance*, onde a poupança final é a diferença entre o Custo Base e o Custo IA[cite: 49, 59].
+* [cite_start]**Penalização por Erro**: O cálculo financeiro penaliza o modelo por erros de previsão (MAPE), integrando o custo de compra de déficit no mercado Spot[cite: 55, 60].
+
+---
+
+## 4. Tecnologias Utilizadas
+* [cite_start]**Processamento**: Databricks e PySpark[cite: 27].
+* **Machine Learning**: XGBoost e MLflow.
+* [cite_start]**Fontes de Dados**: ONS (Carga SE/CO) [cite: 22] [cite_start]e CCEE (Preço Spot PLD)[cite: 31].
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
 
 ## 🔭 Próximos Passos
 
-- [ ] Automação do pipeline de captura de dados
-- [ ] Retroalimentação com dados reais e retreino contínuo do modelo
-- [ ] Migração para Databricks + PySpark
-- [ ] MLflow para rastreamento de experimentos e versionamento de modelos
-- [ ] Dashboard interativo para recomendações de Hedge em tempo real
+- [ ] Criar Dashboard Interativo
+
 
 ---
 
