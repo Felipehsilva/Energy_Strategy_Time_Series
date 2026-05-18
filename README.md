@@ -3,7 +3,7 @@
 [PT-BR](#pt-br) | [EN](#en)
 
 👉 **Full project explanation available on my blog:**  
-🔗 [Click here](https://dataineverywhere.ct.ws/projects/energy-hedge-strategy-how-a-predictive-system-protects-millions-in-energy-costs/)
+🔗 [Click here](https://dataineverywhere.my-board.org/projects/energy-hedge-strategy-how-a-predictive-system-protects-millions-in-energy-costs/)
 
 [![YouTube](https://img.shields.io/badge/YouTube-Project%20Demo-red?logo=youtube)](https://www.youtube.com/watch?v=GKcSGRexRgw)
 ![Status](https://img.shields.io/badge/Status-Completed-brightgreen)
